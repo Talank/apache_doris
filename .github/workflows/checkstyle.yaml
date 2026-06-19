@@ -15,6 +15,10 @@ jobs:
         run: git config --system core.longpaths true
         continue-on-error: true
 
+      - name: Disable autocrlf (Windows)
+        if: runner.os == 'Windows'
+        run: git config --global core.autocrlf false
+
       - name: Checkout
         uses: actions/checkout@v3
         with:
